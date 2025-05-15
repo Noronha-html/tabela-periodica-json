@@ -18,9 +18,16 @@
 }
 
 body{
+    height: 100vh;
     display: flex;
     justify-content: center;
-    margin-top: 15%;
+    align-items: center;
+}
+
+.container{
+    width: 1000px;
+    height: 500px;
+    background-color: red;
 }
 
 .element{
