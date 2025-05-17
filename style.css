@@ -29,7 +29,6 @@ body{
     height: 455px;
     display: flex;
     flex-flow: column wrap;
-    background-color: red;
 }
 
 .tr{
@@ -45,7 +44,7 @@ body{
     display: grid;
     grid-template-columns: repeat(1,65px);
     grid-template-rows: auto;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .z{

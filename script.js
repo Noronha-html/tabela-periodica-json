@@ -16,6 +16,38 @@ function displayTable(elements, rowNumber) {
 
         const td = document.createElement('td');
         td.classList.add('element');
+
+        if(element.grupo == 'red') {
+            td.style.border = 'none';
+        }
+        else if(element.grupo == 'não metal') {
+            td.style.backgroundColor = 'lightgreen';
+        }
+        else if(element.grupo == 'metal') {
+            td.style.backgroundColor = 'lightblue';
+        }
+        else if(element.grupo == 'metal alcalino') {
+            td.style.backgroundColor = 'greenyellow';
+        }
+        else if(element.grupo == 'metal alcalino-terroso') {
+            td.style.backgroundColor = 'orangered';
+        }
+        else if(element.grupo == 'metal de transição') {
+            td.style.backgroundColor = 'lightcoral';
+        }
+        else if(element.grupo == 'metalóide') {
+            td.style.backgroundColor = 'blueviolet';
+        }
+        else if(element.grupo == 'gás nobre') {
+            td.style.backgroundColor = 'darkblue';
+        }
+        else if(element.grupo == 'halogênio') {
+            td.style.backgroundColor = 'purple';
+        }
+        else if(element.grupo == 'post-transition metal') {
+            td.style.backgroundColor = 'orange';
+        }
+
         row.appendChild(td);
         td.innerHTML = `
             <span class="z">${element.numeroAtomico}</span>
@@ -34,33 +66,3 @@ function displayTable(elements, rowNumber) {
 
     console.log(elementsNumber);
 }
-
-/*function displayTable(elements) {
-    const container = document.getElementById('container');
-    const table = document.createElement('table');
-    container.appendChild(table);
-
-    // Crie as linhas da tabela
-    for (let i = 0; i < 10; i++) { // 10 linhas para a tabela periódica
-        const row = document.createElement('tr');
-        table.appendChild(row);
-
-        // Crie as colunas da tabela
-        for (let j = 0; j < 18; j++) { // 18 colunas para a tabela periódica
-            const cell = document.createElement('td');
-            row.appendChild(cell);
-
-            // Verifique se o elemento atual deve ser exibido na célula atual
-            const elementIndex = i * 18 + j;
-            if (elementIndex < elements.length) {
-                const element = elements[elementIndex];
-                cell.innerHTML = `
-                    <span class="z">${element.numeroAtomico}</span>
-                    <span class="simble">${element.simbolo}</span>
-                    <h1 class="name">${element.nome}</h1>
-                    <span class="mace">${element.massaAtomica}</span>
-                `;
-            }
-        }
-    }
-}*/
