@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabela Periódica Interativa</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <table class="container" id="container">
-        <tr class="tr" id="tr1"></tr>
-        <tr class="tr" id="tr2"></tr>
-        <tr class="tr" id="tr3"></tr>
-        <tr class="tr" id="tr4"></tr>
-        <tr class="tr" id="tr5"></tr>
-        <tr class="tr" id="tr6"></tr>
-        <tr class="tr" id="tr7"></tr>
-    </table>
-    <script src="script.js"></script>
+  <table class="container" id="container">
+    <tr class="tr" id="tr1"></tr>
+    <tr class="tr" id="tr2"></tr>
+    <tr class="tr" id="tr3"></tr>
+    <tr class="tr" id="tr4"></tr>
+    <tr class="tr" id="tr5"></tr>
+    <tr class="tr" id="tr6"></tr>
+    <tr class="tr" id="tr7"></tr>
+    <tr class="tr" id="lan"></tr>
+    <tr class="tr" id="act"></tr>
+  </table>
+
+  <!-- Painel de informações -->
+  <div id="info-panel" class="info-panel hidden">
+    <button id="close-btn" class="close-btn">×</button>
+    <div id="info-content"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

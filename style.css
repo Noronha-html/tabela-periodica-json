@@ -1,81 +1,162 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
 }
 
-:root{
-    --black: black;
-    --white: white;
-    --blue: lightblue;
-    --red: lightcoral;
-    --green: greenyellow;
-    --orange: orange;
-    --orangeRed: orangered;
-    --darkBlue: darkblue;
-    --violet: blueviolet;
-    --purple: purple;
+:root {
+  --black: black;
+  --white: white; 
+  --blue: lightblue;
+  --red: lightcoral; 
+  --green: greenyellow; 
+  --orange: orange;
+  --orangeRed: orangered; 
+  --darkBlue: darkblue;
+  --violet: blueviolet; 
+  --purple: purple;
 }
 
-body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container{
-    width: 1170px;
-    height: 455px;
-    display: flex;
-    flex-flow: column wrap;
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: auto;
+  display: table;
+  border-collapse: collapse;
 }
 
-.tr{
-    width: 100%;
-    height: 65px;
-    display: flex;
-    flex-flow: row nowrap;
+.tr {
+  display: table-row;
 }
 
-.element{
-    width: 65px;
-    height: 65px;
-    display: grid;
-    grid-template-columns: repeat(1,65px);
-    grid-template-rows: auto;
-    border: 1px solid black;
+td:empty {
+  border: none;
+  background: transparent;
 }
 
-.z{
-    width: 60px;
-    height: 10px;
-    margin-top: -5px;
-    padding-top: 4px;
-    padding-right: 5px;
-    margin-bottom: 2px;
+.element {
+  display: table-cell;
+  width: 65px;
+  height: 65px;
+  border: 1px solid #000;
+  vertical-align: top;
+  padding: 2px;
 }
 
-.simble{
-    width: 65px;
-    height: 10px;
-    margin-top: -5px;
-    font-size: 22px;
-    text-align: center;
+.z { 
+  display: block; 
+  font-size: 10px; 
+  text-align: right; 
 }
 
-.name{
-    width: 65px;
-    height: 10px;
-    margin-left: -2px;
-    margin-top: 8px;
-    font-size: 13px;
-    text-align: center;
+.simble { 
+  display: block; 
+  font-size: 22px; 
+  text-align: center; 
 }
 
-.mace{
-    width: 65px;
-    height: 5px;
-    text-align: center;
-    font-size: 12px;
+.name { 
+  display: block; 
+  font-size: 13px; 
+  text-align: center; 
+}
+
+.mace { 
+  display: block; 
+  font-size: 12px; 
+  text-align: center; 
+}
+
+.group-red { 
+  border: none; 
+}
+
+.group-hidrogenio {
+  background-color: white;
+}
+
+.group-nao-metal { 
+  background-color: lightgreen; 
+}
+
+.group-metal { 
+  background-color: lightblue; 
+}
+
+.group-metal-alcalino { 
+  background-color: greenyellow; 
+}
+
+.group-metal-alcalino-terroso { 
+  background-color: orangered; 
+}
+
+.group-metal-de-transicao { 
+  background-color: lightcoral; 
+}
+
+.group-metaloide { 
+  background-color: blueviolet; 
+}
+
+.group-gas-nobre { 
+  background-color: cornflowerblue; 
+}
+
+.group-halogenio { 
+  background-color: purple;
+}
+
+.group-post-transition-metal { 
+  background-color: orange; 
+}
+
+.group-lantanideo { 
+  background-color: mediumslateblue;
+}
+
+.group-actinoid { 
+  background-color: mediumorchid;
+}
+
+.info-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 280px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 100;
+}
+.hidden {
+  display: none;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+#info-content h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+#info-content p {
+  margin: 4px 0;
+  font-size: 14px;
 }

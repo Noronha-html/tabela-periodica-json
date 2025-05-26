@@ -1,68 +1,81 @@
-const elementsData = [];
+let elementos = [];
 
 fetch('dados_quimica.json')
-    .then(response => response.json())
-    .then(data => {
-        elements = data;
-        displayTable(data, 1);
-    })
-    .catch(error => console.error("Erro!", error));
+  .then(r => r.json())
+  .then(data => {
+    elementos = data;
+    for (let period = 1; period <= 7; period++) {
+      renderRow(period, `tr${period}`);
+    }
+    renderRow(8, 'lan');
+    renderRow(9, 'act');
+    attachClickHandlers();
+  })
+  .catch(err => console.error(err));
 
-function displayTable(elements, rowNumber) {
-    let elementsNumber = 0;
+function renderRow(linha, rowId) {
+  const row = document.getElementById(rowId);
+  for (let col = 1; col <= 18; col++) {
+    const td = document.createElement('td');
+    td.classList.add('element');
 
-    elements.forEach(element => {
-        const row = document.getElementById(`tr${rowNumber}`);
+    const el = elementos.find(e => e.linha === linha && e.coluna === col);
+    if (el && el.simbolo) {
+      td.innerHTML = `
+        <span class="z">${el.numeroAtomico}</span>
+        <span class="simble">${el.simbolo}</span>
+        <h1 class="name">${el.nome}</h1>
+        <span class="mace">${el.massaAtomica}</span>
+      `;
+      td.dataset.atomic = el.numeroAtomico;
+      td.dataset.symbol = el.simbolo;
+      const grp = normalizeGroup(el.grupo);
+      td.classList.add(`group-${grp}`);
+    } else {
 
-        const td = document.createElement('td');
-        td.classList.add('element');
+    }
 
-        if(element.grupo == 'red') {
-            td.style.border = 'none';
-        }
-        else if(element.grupo == 'não metal') {
-            td.style.backgroundColor = 'lightgreen';
-        }
-        else if(element.grupo == 'metal') {
-            td.style.backgroundColor = 'lightblue';
-        }
-        else if(element.grupo == 'metal alcalino') {
-            td.style.backgroundColor = 'greenyellow';
-        }
-        else if(element.grupo == 'metal alcalino-terroso') {
-            td.style.backgroundColor = 'orangered';
-        }
-        else if(element.grupo == 'metal de transição') {
-            td.style.backgroundColor = 'lightcoral';
-        }
-        else if(element.grupo == 'metalóide') {
-            td.style.backgroundColor = 'blueviolet';
-        }
-        else if(element.grupo == 'gás nobre') {
-            td.style.backgroundColor = 'darkblue';
-        }
-        else if(element.grupo == 'halogênio') {
-            td.style.backgroundColor = 'purple';
-        }
-        else if(element.grupo == 'post-transition metal') {
-            td.style.backgroundColor = 'orange';
-        }
+    row.appendChild(td);
+  }
+}
 
-        row.appendChild(td);
-        td.innerHTML = `
-            <span class="z">${element.numeroAtomico}</span>
-            <span class="simble">${element.simbolo}</span>
-            <h1 class="name">${element.nome}</h1>
-            <span class="mace">${element.massaAtomica}</span>
-        `;
 
-        elementsNumber++;
+function normalizeGroup(grupo) {
+  return grupo.toLowerCase()
+    .normalize('NFD')
+    .replace(/[^a-z\s-]/g, '')
+    .replace(/\s+/g, '-');
+}
 
-        if(elementsNumber == 18) {
-            rowNumber++;
-            elementsNumber = 0;
-        }
-    });
+function attachClickHandlers() {
+  document.querySelectorAll('.element').forEach(cell => {
+    if (cell.dataset.atomic) {
+      cell.addEventListener('click', () => {
+        const atomNum = cell.dataset.atomic;
+        const el = elementos.find(e => e.numeroAtomico === atomNum);
+        if (el) showInfo(el);
+      });
+    }
+  });
+  document.getElementById('close-btn').addEventListener('click', () => {
+    document.getElementById('info-panel').classList.add('hidden');
+  });
+}
 
-    console.log(elementsNumber);
+function showInfo(el) {
+  const panel = document.getElementById('info-panel');
+  const content = document.getElementById('info-content');
+  content.innerHTML = `
+    <h2>${el.nome} (${el.simbolo})</h2>
+    <p><strong>Número Atômico:</strong> ${el.numeroAtomico}</p>
+    <p><strong>Massa Atômica:</strong> ${el.massaAtomica}</p>
+    <p><strong>Configuração Eletrônica:</strong> ${el.configuracaoEletronica}</p>
+    <p><strong>Eletronegatividade:</strong> ${el.eletronegatividade || '—'}</p>
+    <p><strong>Estado Padrão:</strong> ${el.estadoPadrao}</p>
+    <p><strong>Tipo de Ligação:</strong> ${el.tipoDeLigacao}</p>
+    <p><strong>Ponto de Fusão:</strong> ${el.pontoDeFusao} °C</p>
+    <p><strong>Ponto de Ebulição:</strong> ${el.pontoDeEbulicao} °C</p>
+    <p><strong>Descoberto em:</strong> ${el.anoDeDescoberta}</p>
+  `;
+  panel.classList.remove('hidden');
 }
