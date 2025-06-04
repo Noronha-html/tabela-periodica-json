@@ -32,13 +32,11 @@ function renderRow(linha, rowId) {
       const grp = normalizeGroup(el.grupo);
       td.classList.add(`group-${grp}`);
     } else {
-
+      td.style.visibility = 'hidden';
     }
-
     row.appendChild(td);
   }
 }
-
 
 function normalizeGroup(grupo) {
   return grupo.toLowerCase()
@@ -78,4 +76,22 @@ function showInfo(el) {
     <p><strong>Descoberto em:</strong> ${el.anoDeDescoberta}</p>
   `;
   panel.classList.remove('hidden');
+}
+
+function calcularCarga() {
+  const n = parseFloat(document.getElementById('n-value').value);
+  const e = parseFloat(document.getElementById('e-value').value);
+  if (isNaN(n) || isNaN(e)) return alert('Preencha todos os valores');
+  const q = n * e;
+  document.getElementById('resultado-carga').textContent = `Q = ${q} C`;
+}
+
+function calcularForca() {
+  const q1 = parseFloat(document.getElementById('q1').value);
+  const q2 = parseFloat(document.getElementById('q2').value);
+  const d = parseFloat(document.getElementById('distancia').value);
+  const k = parseFloat(document.getElementById('k-valor').value);
+  if (isNaN(q1) || isNaN(q2) || isNaN(d) || isNaN(k)) return alert('Preencha todos os valores');
+  const f = (k * q1 * q2) / (d * d);
+  document.getElementById('resultado-forca').textContent = `F = ${f} N`;
 }

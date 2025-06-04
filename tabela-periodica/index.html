@@ -25,6 +25,33 @@
     <div id="info-content"></div>
   </div>
 
+  <!-- Calculadora -->
+  <div class="calc-section">
+    <h2>Cálculos Físicos</h2>
+
+    <section class="calc-block">
+      <h3>Carga elétrica de um átomo</h3>
+      <p>Essa fórmula calcula a carga total de um átomo multiplicando o número de partículas carregadas (n) pela carga elementar (e).</p>
+      <p><strong>Fórmula:</strong> Q = n × e</p>
+      <label>n (número de partículas): <input type="number" id="n-value"></label>
+      <label>e (carga elementar em C): <input type="number" id="e-value" value="1.602e-19"></label>
+      <button onclick="calcularCarga()">Calcular Q</button>
+      <p id="resultado-carga"></p>
+    </section>
+
+    <section class="calc-block">
+      <h3>Interação entre cargas</h3>
+      <p>Essa fórmula calcula a força entre duas cargas elétricas utilizando a Lei de Coulomb.</p>
+      <p><strong>Fórmula:</strong> F = (K × q1 × q2) / d²</p>
+      <label>q1 (C): <input type="number" id="q1"></label>
+      <label>q2 (C): <input type="number" id="q2"></label>
+      <label>d (m): <input type="number" id="distancia"></label>
+      <label>K (Constante de Coulomb): <input type="number" id="k-valor" value="8.99e9"></label>
+      <button onclick="calcularForca()">Calcular F</button>
+      <p id="resultado-forca"></p>
+    </section>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

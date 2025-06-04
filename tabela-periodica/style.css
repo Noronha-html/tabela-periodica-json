@@ -1,40 +1,38 @@
-* { 
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 :root {
   --black: black;
-  --white: white; 
+  --white: white;
   --blue: lightblue;
-  --red: lightcoral; 
-  --green: greenyellow; 
+  --red: lightcoral;
+  --green: greenyellow;
   --orange: orange;
-  --orangeRed: orangered; 
+  --orangeRed: orangered;
   --darkBlue: darkblue;
-  --violet: blueviolet; 
+  --violet: blueviolet;
   --purple: purple;
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .container {
   width: 100%;
-  max-width: 1170px;
+  max-width: 1200px;
   margin: auto;
-  display: table;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
-.tr {
-  display: table-row;
-}
 
 td:empty {
   border: none;
@@ -42,37 +40,42 @@ td:empty {
 }
 
 .element {
-  display: table-cell;
-  width: 65px;
-  height: 65px;
+  width: calc(100% / 18);
+  aspect-ratio: 1 / 1;
   border: 1px solid #000;
   vertical-align: top;
-  padding: 2px;
+  padding: 4px;
+  overflow: hidden;
 }
 
-.z { 
-  display: block; 
-  font-size: 10px; 
-  text-align: right; 
+.z {
+  display: block;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem);
+  text-align: right;
 }
 
-.simble { 
-  display: block; 
-  font-size: 22px; 
-  text-align: center; 
+.simble {
+  display: block;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  text-align: center;
+  line-height: 1;
 }
 
-.name { 
-  display: block; 
-  font-size: 13px; 
-  text-align: center; 
+.name {
+  display: block;
+  font-size: clamp(0.5rem, 1.2vw, 0.9rem);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.mace { 
-  display: block; 
-  font-size: 12px; 
-  text-align: center; 
+.mace {
+  display: block;
+  font-size: clamp(0.5rem, 1vw, 0.8rem);
+  text-align: center;
 }
+
 
 .group-red { 
   border: none; 
@@ -140,9 +143,11 @@ td:empty {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   z-index: 100;
 }
+
 .hidden {
   display: none;
 }
+
 .close-btn {
   position: absolute;
   top: 8px;
@@ -152,11 +157,49 @@ td:empty {
   font-size: 18px;
   cursor: pointer;
 }
+
 #info-content h2 {
   margin-top: 0;
   font-size: 20px;
 }
+
 #info-content p {
   margin: 4px 0;
   font-size: 14px;
+}
+
+/* ========================= Calculadora ========================= */
+
+.calc-section {
+  margin: 40px auto;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+.calc-block {
+  margin-bottom: 30px;
+}
+
+.calc-block h3 {
+  margin-top: 0;
+}
+
+.calc-block label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.calc-block input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.calc-block button {
+  margin-top: 10px;
+  padding: 6px 12px;
 }
