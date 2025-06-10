@@ -78,6 +78,11 @@ function showInfo(el) {
   panel.classList.remove('hidden');
 }
 
+function showCalcInfo() {
+  const calcSection = document.querySelector('.calc-section');
+  calcSection.classList.remove('hidden');
+}
+
 function calcularCarga() {
   const n = parseFloat(document.getElementById('n-value').value);
   const e = parseFloat(document.getElementById('e-value').value);
